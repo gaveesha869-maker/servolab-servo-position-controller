@@ -37,7 +37,7 @@ The project was developed and tested using **Tinkercad Circuits**, a browser-bas
 | Potentiometer outer pins        | 5V and GND         |
 | Servo signal wire               | Digital pin 9      |
 | Servo power wire (red)          | 5V                 |
-| Servo ground wire (brown/black) | GND                |
+| Servo ground wire (brown)       | GND                |
 
 ## Testing
 
