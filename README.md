@@ -1,75 +1,86 @@
-# ServoLab — Interactive Servo Position Controller
+# ServoLab — Servo Position Controller with LCD
 
-## Overview
+An Arduino-based servo position control project built and tested in Tinkercad Circuits. The system uses a potentiometer to control a servo motor and displays the commanded angle on a 16×2 LCD.
 
-ServoLab is a beginner-friendly mechatronics project that demonstrates how a potentiometer can control the position of a servo motor using an Arduino Uno.
+## Project Overview
 
-The project was developed and tested using **Tinkercad Circuits**, a browser-based electronics simulation tool.
+ServoLab demonstrates the fundamentals of embedded systems, analog input processing, actuator control, and LCD interfacing.
 
-## Project Objectives
+The potentiometer provides a variable input to the Arduino. The Arduino converts the analog reading into a target angle between 0° and 180°, commands the servo to move, and displays the target angle on the LCD.
 
-* Read analog input from a potentiometer.
-* Convert sensor readings into servo position commands.
-* Control a servo using the Arduino Servo library.
-* Display sensor readings and target angles through the Serial Monitor.
+## Features
+
+* Potentiometer-based position control
+* Arduino analog input processing
+* Conversion of analog readings into servo angles
+* Servo motor control using the Servo library
+* Real-time target-angle display on a 16×2 LCD
+* Serial Monitor output for debugging and observation
 
 ## Components Used
 
 * Arduino Uno R3
 * Potentiometer
-* Servo motor
-* Connecting wires
-* Tinkercad Circuits for simulation
-
-## How It Works
-
-1. The potentiometer provides an adjustable analog input to pin A0.
-2. The Arduino reads a value between 0 and 1023.
-3. The `map()` function converts that reading into an angle between 0 and 180 degrees.
-4. The `Servo` library sends the position command to the servo connected to digital pin 9.
-5. The Serial Monitor displays the sensor reading and target angle.
+* Micro servo motor
+* 16×2 LCD
+* Jumper wires
+* Tinkercad Circuits simulation
 
 ## Pin Connections
 
-| Component                       | Arduino connection |
-| ------------------------------- | ------------------ |
-| Potentiometer middle pin        | A0                 |
-| Potentiometer outer pins        | 5V and GND         |
-| Servo signal wire               | Digital pin 9      |
-| Servo power wire (red)          | 5V                 |
-| Servo ground wire (brown)       | GND                |
+| Component                | Connection                                      |
+| ------------------------ | ----------------------------------------------- |
+| Potentiometer outer pins | 5V and GND                                      |
+| Potentiometer middle pin | A0                                              |
+| Servo signal             | Digital pin 9                                   |
+| Servo power              | 5V and GND                                      |
+| LCD RS                   | Digital pin 12                                  |
+| LCD E                    | Digital pin 11                                  |
+| LCD DB4                  | Digital pin 5                                   |
+| LCD DB5                  | Digital pin 4                                   |
+| LCD DB6                  | Digital pin 3                                   |
+| LCD DB7                  | Digital pin 2                                   |
+| LCD RW                   | GND                                             |
+| LCD VCC                  | 5V                                              |
+| LCD GND                  | GND                                             |
+| LCD VO                   | GND for the simulation's initial contrast setup |
+
+The LCD operates in 4-bit mode. DB0–DB3 are left unconnected. The LCD backlight pins are not connected in the current circuit.
+
+## How It Works
+
+1. The potentiometer produces a variable voltage.
+2. The Arduino reads the voltage through analog input A0, producing a value from 0 to 1023.
+3. The `map()` function converts that reading into a target angle from 0° to 180°.
+4. The Servo library sends the position command to the servo.
+5. The LCD displays the commanded angle.
+6. The Serial Monitor displays the sensor reading and target angle for debugging.
 
 ## Testing
 
-The simulation was tested at minimum, middle, and maximum potentiometer positions.
+The circuit was tested in Tinkercad Circuits at three potentiometer positions:
 
-* Minimum input: servo commanded toward 0°.
-* Middle input: servo commanded to approximately 90°.
-* Maximum input: servo commanded toward 180°.
-* Serial Monitor: displayed changing sensor readings and target angles.
+* Minimum input: target angle approaches 0°.
+* Middle input: target angle approaches 90°.
+* Maximum input: target angle approaches 180°.
 
-## Skills Demonstrated
+All three tests passed.
 
-* Arduino programming with C++
-* Analog input reading
-* Basic sensor-to-actuator control
+## Technologies and Concepts
+
+* Arduino C/C++
+* Tinkercad Circuits
+* Analog input processing
 * Servo motor control
-* Serial communication and debugging
-* Circuit simulation and testing
+* 16×2 LCD interfacing
+* Embedded systems fundamentals
 
 ## Project Status
 
-Completed beginner-level simulation project.
+Working simulation prototype.
 
-**Note:** This project was tested in simulation. It has not yet been tested using physical hardware.
-
-## Future Improvements
-
-* Add input smoothing to reduce jitter.
-* Restrict the servo's movement to a configurable safe range.
-* Add a second control mode using predefined positions.
-* Build and test the circuit with physical components.
+**Note:** The LCD displays the commanded angle, not an independently measured servo shaft position. This project is a simulation and has not been tested on physical hardware.
 
 ## Author
 
-Mechatronics learner building practical projects to develop programming, electronics, and control-system skills.
+Created as a hands-on Mechatronics learning and portfolio project.
